@@ -33,15 +33,17 @@ btn[4].addEventListener("click", () => {
     }
 })
 // Timer for box No6.
+let timeoutID: NodeJS.Timeout;
 btn[5].addEventListener("click", () => {
-    let func = (i: number) => {
-        setTimeout(() => {
-            boxes[5].firstElementChild.textContent = String(i);
-        }, i*3000)
-    }
-    for(let i=0; i<=10; i++){
-        func(i);
-    }  
+    clearTimeout(timeoutID);
+    let sum = 0;
+    boxes[5].firstElementChild.textContent = String(sum);
+    timeoutID = setInterval(()=>{
+        boxes[5].firstElementChild.textContent = String(sum += 1);
+        if(sum === 10){
+            clearInterval(timeoutID)
+        }
+    }, 1000)
 })
 // Button 7 - change all box colors and background
 btn[6].addEventListener("click", () => {
@@ -59,19 +61,18 @@ boxes[0].addEventListener("mouseout", () => {
     boxes[0].style.backgroundColor = "";
 })
 // Timer for box No5 on hover.
-    let timeoutId: NodeJS.Timeout;
+let timeoutId: NodeJS.Timeout;
 boxes[4].addEventListener("mouseover", () => {
-    let func1 = (i: number) => {
-        setTimeout(() => {
-            boxes[4].firstElementChild.textContent = String(i);
-        }, i*3000)
-    }
-    for(let i=0; i<=10; i++){
-        func1(i);
-    }  
+    let sum = 0;
+    timeoutId = setInterval(()=>{
+        boxes[4].firstElementChild.textContent = String(sum += 1);
+        if(sum === 10){
+            clearInterval(timeoutId)
+        }
+    }, 1000)
 })
 boxes[4].addEventListener("mouseout", () => {
-    clearTimeout(timeoutId);
+    clearInterval(timeoutId);
     boxes[4].firstElementChild.textContent = "0";
 })
 // TEXT OUTPUT
@@ -89,5 +90,6 @@ btn[7].addEventListener("click", () => {
     boxes[2].style.visibility = ""
     boxes[3].style.visibility = ""
     boxes[1].firstElementChild.textContent = "FAIL"
+    output.style.color = ""
 })
 
