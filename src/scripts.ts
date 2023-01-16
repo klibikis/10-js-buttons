@@ -1,7 +1,7 @@
-const btn = document.querySelectorAll<HTMLElement>(".js-btn");
-const boxes = document.querySelectorAll<HTMLElement>(".js-box");
-const input = document.querySelector<HTMLElement>(".js-input");
-const output = document.querySelector<HTMLElement>(".js-output");
+const btn = document.querySelectorAll<HTMLButtonElement>(".js-btn");
+const boxes = document.querySelectorAll<HTMLDivElement>(".js-box");
+const input = document.querySelector<HTMLInputElement>(".js-input");
+const output = document.querySelector<HTMLDivElement>(".js-output");
 
 
 btn[0].addEventListener("click", () => {
@@ -47,11 +47,19 @@ btn[5].addEventListener("click", () => {
 })
 // Button 7 - change all box colors and background
 btn[6].addEventListener("click", () => {
-    boxes.forEach(box => {
-        box.style.backgroundColor = "#18D5E1";
-    })
-    document.body.style.backgroundColor = "#000000"
-    output.style.color = "white"
+    if(document.body.style.backgroundColor == ""){
+        boxes.forEach(box => {
+            box.style.backgroundColor = "#18D5E1";
+        })
+        document.body.style.backgroundColor = "#000000"
+        output.style.color = "white"
+    }else{
+        boxes.forEach(box => {
+            box.style.backgroundColor = "#1FC2AE";
+        })
+        document.body.style.backgroundColor = ""
+        output.style.color = "black"
+    }
 })
 // Box No1. => background color red on hover
 boxes[0].addEventListener("mouseover", () => {
@@ -77,8 +85,8 @@ boxes[4].addEventListener("mouseout", () => {
 })
 // TEXT OUTPUT
 
-input.addEventListener("keypress", (e) => {
-    output.textContent += `${e.key}`;
+input.addEventListener("keyup", () => {
+    output.innerText = input.value
 })
 
 // RESET
