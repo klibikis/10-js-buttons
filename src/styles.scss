@@ -6,7 +6,6 @@
 .box--text{
   font-size: 30px;
 }
-
 .box{
   width: 15vw;
   height: 15vw;
@@ -15,18 +14,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.bg{
-  background-color: coral;
-}
-.input{
-  position: relative;
-}
-.input::after{
-  content: "dddd";
-  position: absolute;
-  top: 30px;
-  left: 0;
-  background-color: bisque;
 }

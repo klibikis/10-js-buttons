@@ -1,7 +1,7 @@
-const btn = document.querySelectorAll<HTMLElement>(".btn");
-const boxes = document.querySelectorAll<HTMLElement>("div.box");
-const input = document.querySelector<HTMLElement>(".input");
-const output = document.querySelector<HTMLElement>(".output");
+const btn = document.querySelectorAll<HTMLElement>(".js-btn");
+const boxes = document.querySelectorAll<HTMLElement>(".js-box");
+const input = document.querySelector<HTMLElement>(".js-input");
+const output = document.querySelector<HTMLElement>(".js-output");
 
 
 btn[0].addEventListener("click", () => {
@@ -91,5 +91,9 @@ btn[7].addEventListener("click", () => {
     boxes[3].style.visibility = ""
     boxes[1].firstElementChild.textContent = "FAIL"
     output.style.color = ""
+    output.textContent = ""
+    input.textContent = ""
+    clearTimeout(timeoutID);
+    boxes[5].firstElementChild.textContent = "0";
 })
 
