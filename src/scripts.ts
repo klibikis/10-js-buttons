@@ -103,5 +103,6 @@ btn[7].addEventListener("click", () => {
     input.textContent = ""
     clearTimeout(timeoutID);
     boxes[5].firstElementChild.textContent = "0";
+    input.value = ""
 })
 
